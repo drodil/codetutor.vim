@@ -25,7 +25,7 @@ I suggest you install it first :grin:
 ## TODO
 
 * More programming specific lessons under lesson 4
-** Commenting source code
+    * Commenting source code
 * Working with version control
 * Abbrevations lesson
 * Examples of creating .vimrc
