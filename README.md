@@ -14,7 +14,8 @@ this tutor.
 
 All lessons in the tutor are created based on my learning journey to
 vim. As I am not expert (yet) on this matter all contributions are
-welcome.
+welcome. You can find my blog post about crash course to vim at
+https://medium.com/@drodil/my-vim-crashcourse-1d50d4e9d558
 
 ## HOWTO
 
