@@ -19,8 +19,8 @@ https://medium.com/@drodil/my-vim-crashcourse-1d50d4e9d558
 
 ## HOWTO
 
-Just open up the codetutor.vim with (of course) vim (to be clear, run
-command: 'vim codetutor.vim'). If you are missing installation of vim
+Just open up the codetutor with (of course) vim (to be clear, run
+command: 'vim codetutor'). If you are missing installation of vim
 I suggest you install it first :grin:
 
 ## TODO
