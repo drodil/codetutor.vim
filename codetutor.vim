@@ -1,0 +1,725 @@
+===============================================================================
+=                        Vim tutor for development                            =
+===============================================================================
+
+    Another tutor to guide through vim basic commands as well as some
+    cpp and other code related commands. This tutor is constructed on basis
+    of my learning with vim and what are the most useful commands for me.
+
+    Some of the lessons are partially copied from the original vimtutor
+    (https://github.com/vim/vim/blob/master/runtime/tutor/tutor). You should
+    most probably complete that first.
+
+    If you are new to vim, I would recommend that you complete vimtutor
+    and this tutor every day for a week. That way you can learn the commands
+    completely. I know it's a learning curve but trust me, it pays off in
+    the end.
+
+    In the tutor you might find some modifiers that should be replaced with
+    whatever you need for your use case. Modifiers are:
+    * [C] - Any character, numeric or alphabetical
+    * [N] - A number
+    * [F] - A filename
+
+===============================================================================
+
+                        Lesson 1: THE BASICS
+
+    These should be familiar for you if you completed vimtutor but as you know
+    repetition is the mother of all learning. I have marked all commands that
+    can additionally take multiplier with [@] character. There are also examples
+    under specific command what it means.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+                        Lesson 1.1: BASIC MOVEMENT
+
+    You should already be comfortable with basic movement with h,j,k and l
+    keys. If not, please complete vimtutor first.
+
+    * j - Go down [@]
+        * 2j - Go down 2 lines
+    * k - Go up [@]
+        * 3k - Go up 3 lines
+    * h - Go left [@]
+        * 4h - Go left 4 characters
+    * l - Go right [@]
+        * 5l - Go right 5 characters
+
+    To be sure you can do this, please go to the | start point and move
+    yourself through the track marked with * characters
+
+|****************************     ***********     ☕********
+                            *     *         *             *
+      *******               *     *         *             *
+      *     *               *     *         *             *
+      *     *****************     *         ***************
+      *                           *
+      *****************************
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+                        Lesson 1.2: JUMP AROUND
+
+    One of the most crucial things to learn in vim is jumping around with
+    shortcuts. To move around the source you should familiarize yourself
+    with the following commands:
+
+    * w - Jump forwards to the start of the word [@]
+        * [N]w - Jump forwards [N] words to the start of the word
+    * W - Jump forwards to the start of the word (discard punctuation) [@]
+    * e - jump forwards to the end of the word [@]
+    * E - Jump forwards to the end of the word (discard punctuation) [@]
+    * b - Jump backwards to the start of the word [@]
+    * B - Jump backwards to the start of the word (discard punctuation) [@]
+    * 0 - Jump to the start of the line
+    * ^ - Jump to the first non-blank character of the line
+    * $ - Jump to the end of the line
+    * [N]| - Jump to column [N]
+
+    You can play around with these in the following sentence and see how
+    they operate in different situations:
+
+There might be some punctuatio'n characters like this#is#function in between.
+    Also there might be some blank characters in the start where 0 doesn't work.
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+                   Lesson 1.2: JUMP AROUND (FASTER)
+
+    Sometimes you might get bored of pressing k and j buttons until you
+    get to the place you want to go. There are faster ways to do this:
+
+    * f[C] - Jump to the next occurence of character [C] [@]
+        * [N]f[C] - Jump to [N]th occurence of character [C]
+    * F[C] - Jump to the previous occurence of character [C] [@]
+    * t[C] - Jump to the before next occurence of character [C] [@]
+    * T[C] - Jump to the after previous occurence of character [C] [@]
+    * ; - Repeat previous f, t, F or T movement
+    * , - Repeat previous f, t, F or T movement backwards
+
+    Here's a challenge: With how many commands can you now complete
+    the "star-track" in the Lesson 1.1? If you can get through it with less
+    than 14 commands, you can be proud of yourself!
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+                   Lesson 1.3: JUMP AROUND THE FILE
+
+    Now that we are pretty clear how to navigate through single lines, we can
+    move to commands that move you a lot faster through the document.
+
+    * [N]G - Go to the line [N] for example 5G would go to line 5
+    * gg - Go to the first line of the document
+    * G - Go to the last line of the document [@]
+    * Ctrl + b - Move back one full screen
+    * Ctrl + f - Move forward one full screen
+    * Ctrl + u - Move back 1/2 a screen
+    * Ctrl + d - Move forward one full screen
+
+    You can also move around the document without moving the cursor:
+
+    * Ctrl + e - Move screen down one line without moving the cursor
+    * Ctrl + y - Move screen up one line without moving the cursor
+    * zz - Center the cursor on screen
+
+    Ok, now you can try these out in this document. Try to remember them
+    and put them in your muscle memory. When you think you are ready, move
+    to the next chapter.
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+                   Lesson 1.4: JUMP AROUND THE CODE
+
+    There are some movement commands that are pretty useful when working
+    with code:
+
+    * { - Jump to the next paragraph
+    * } - Jump to the previous paragraph
+    * % - Jump to the matching character
+
+    You can play around these in the following simple code block:
+
+int user_function(const std::string& word) {
+    std::cout << word << std::endl;
+    return word.length();
+}
+
+int main(int argc, char** argv[]) {
+    return user_function("hello vim") + 1;
+}
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+                       Lesson 1.5: GLOBAL COMMANDS
+
+    There are few global commands that are used for getting help, opening files
+    and other important stuff related to working with files. Here's a list of
+    the most important of them:
+
+    * :w - Save the current file
+    * :wq - Save the current file and exit
+    * :wqa - Save all tabs and quit
+    * :q - Quit
+    * :q! - Quit and throw away unsaved changes
+    * :help [K] - Open help for [K] keyword
+    * :o [F] - Open file [F]
+    * :saveas [F] - Save file as [F]
+    * :close - Closes current panel
+    * K - Open man page for word under the cursor
+
+    You can try these out but remember to get back here ;)
+
+===============================================================================
+
+                     Lesson 2: WORKING WITH TEXT
+
+    In this lesson we go through commands that you will use to insert, edit,
+    delete, copy and paste text in vim. Most of the commands work together
+    with the movement commands which makes them really powerful. I have marked
+    commands that support using movement commands with [@] character.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+                     Lesson 2.1: INSERTING TEXT
+
+    To get your coding started you might want to insert some text in the
+    source files. There are multiple ways to get in to the insert mode:
+
+    * i - Insert before the cursor [@]
+    * I - Insert at the beginning of the line
+    * a - Insert after the cursor [@]
+        * ea - Insert at the end of the word
+    * A - Insert at the end of the line
+    * o - Append a new line below the current line and insert
+    * O - Append a new line above the current line and insert
+
+    To get back to normal mode from inserting you can press ESC.
+    Now fill in the functions like they were in Lesson 1.4. using
+    the insert mode. When you feel confident of going into insert
+    mode using these commands you can continue to the next chapter.
+
+int user_function(const std::string&
+}
+
+t main(int argc, char** argv[]) {
+}
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+                   Lesson 2.2: SELECTING TEXT
+
+    To select text you can use so called visual mode. To get to the visual
+    mode you have to press 'v' in the normal mode. In the visual mode
+    you can select text by using the movement keys explained before. Visual
+    mode has actually three different submodes you can use. You can access
+    other modes with CTRL and SHIFT superkeys combined with 'v':
+
+    * v - Start visual mode
+    * V - Start linewise visual mode
+    * Ctrl+v - Start visual block mode
+
+    There are some other commands you can use in the visual mode:
+
+    * o - Move to other end of the marked area
+    * O - Move to other corner of the block (in block mode)
+    * aw - Mark a word
+    * ab - Mark a block with ()
+    * aB - Mark a block with {}
+    * ib - Mark an inner block with ()
+    - iB - Mark an inner block with {}
+
+    You can get out of the visual mode by pressing ESC.
+
+    Now you can try to play around the visual mode by marking parts of this
+    lesson. Once you feel confident, move to the next lesson.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+                      Lesson 2.3: EDITING TEXT
+
+    Editing text in normal mode is something you should always try
+    to do instead trying to do it in the insert mode. As a base rule,
+    try to stay out of insert mode always when you are not actually
+    inserting text. Here are some commands for editing text in the normal
+    mode:
+
+    * r[C] - Replace character under cursor with [C]
+    * c - Change [@]
+        * cc - Change current line
+        * cw - Change to the end of the word
+        * c$ - Change to the end of the line
+    * s - Delete character and go to insert mode [@]
+        * 4s - Delete 4 characters and go to insert mode
+    * x - Delete character under cursor [@]
+        * 4x - Delete 4 characters
+
+    Now try to fix the following sentence to match the one below:
+
+Txe quick bronw fox jumpss the lazy dog and cat
+The quick brown fox jumps over the lazy dog
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+                         Lesson 2.4: UNDO/REDO
+
+    Sometimes it happens that we accidentally press wrong buttons especially
+    in vim. Then you need to undo and redo things. This is easily done with:
+
+    * u - Undo the last command [@]
+        * 5u - Undo the last 5 commands
+    * Ctrl+r - Redo the last undo [@]
+        * 2 Ctrl+r - Redo the last 2 undos
+    * . - Repeat the last command [@]
+        * 3. - Repeat the last command 3 times
+
+    Now try to delete this few words from this line and then try undo and redo
+    commands to get the line back to it's original state.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+                       Lesson 2.5: INDENTATION
+
+    If you are a coder you most probably like the indentation in
+    your source files. In the insert mode this works like in any other
+    editor with TAB key but there are also other ways to add, remove or
+    fix indentation in normal and visual mode:
+
+    In the normal mode:
+    * >> - Grow indentation on the line [@]
+        * >2k - Grow indentation on current line and two previous lines
+        * [N]>> - Increase indentation [N] lines below the current line
+    * << - Decrease indentation on the line [@]
+        * <2k - Decrease indentation on current line and two previous lines
+        * [N]<< - Decrease indentation [N] lines below the current line
+    * == - Automatically indent the current line [@]
+        * [N]== - Automatically indent [N] lines below the current line
+    * gg=G - Automatically indent the whole file
+
+    In the visual mode:
+    * > - Grow indentation on the line
+    * < - Decrease indentation on the line
+    * = - Indent the selected block
+
+    You can configure the amount of indentation and tab/space usage in
+    your .vimrc file (explained in Lesson 5).
+
+    Now fix indentation for the following code block:
+
+        class TestClass {
+                        public:
+TestClass() = default;
+    ~TestClass() = default;
+                            void DoStuff();
+
+private:
+        int DoMoreStuff();
+    };
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+                       Lesson 2.6: COPY AND PASTE
+
+    Copy and paste is very used feature for programmers (see the irony here).
+    In vim this is made very easy and basically you only need to remember
+    only 3 commands to get you started:
+
+    * y - Copy [@]
+        * yy - Copy the entire line
+        * [N]yy - Copy [N] lines
+    * d - Cut [@]
+        * D - Cut to the end of the line
+        * dd - Cut the line
+        * [N]dd - Cut [N] lines
+    * x - Cut character under cursor
+    * p - Paste after the cursor
+    * P - Paste before the cursor
+    * Ctrl + P - Paste from OS clipboard
+
+    Now fix the following class with copy and paste functions so that it
+    looks like the one in Lesson 2.4:
+
+public:
+class TestClass {
+    default; = TestClass()
+    DoStuff(); void
+
+private:
+    ~TestClass() = default;
+    ()int DoMoreStuff;
+};
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+                          Lesson 2.7: SEARCHING
+
+    Sometimes you need to search for something in your current buffer (makes
+    sense). Searching in vim works with regex so it's something you should
+    know at least on some level. This can be done with the following commands:
+
+    * * - Search the word under cursor
+    * /[S] - Search for [S] forwards in current buffer
+    * ?[S] - Search for [S] backwards in current buffer
+    * n - Repeat search in the same direction
+    * N - Repeat search in the opposite direction
+    * :noh - Remove highlighting of search matches
+
+    Searching in multiple files can be done with :vimgrep command though
+    there are better alternatives such as fzf but it requires a plugin.
+    To search in multiple files:
+
+    * :vimgrep /[S]/ [FILES] - Searches for pattern in given files
+    * :cn - Jump to the next match
+    * :cp - Jump to the previous match
+    * :copen - Open a window containing the list of matches
+
+    Now try to search all "Lesson" words in this document. Try it forwards
+    and backwards until you feel confident.
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+                           Lesson 2.8: REPLACING
+
+    Once you know how to search for strings, now it's time to replace some.
+    Replacing in vim works same way it works with commandline tool sed.
+    This is done with the following command:
+
+    * :s/[O]/[N] - Replace first occurence of [O] with [N] in current line
+    * :s/[O]/[N]/g - Replace all [O] with [N] in current line
+    * :%s/[O]/[N]/g - Replace all [O] with [N] in the current buffer
+    * :%s/[O]/[N]/gc - Replace all [O] with [N] in current buffer but confirm
+                       each replacement first
+    * :g/[S]/d - Delete all lines containing [S]
+    * :v/[S]/d - Delete all lines not containing [S]
+
+    Now try to replace all "Lesson" words in this document with "Chapter" and
+    vice versa.
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+                          Lesson 2.9: WORD CASE
+
+    Sometimes you need to change word cases from uppercase to lowercase and
+    vice versa. Vim has commands also to do this:
+
+    * Vu - Lowercase current line
+    * VU - Uppercase current line
+    * g~~ - Invert case on current line
+    * vEU - Switch word to upper case
+    * vE~ - Invert word case
+    * ggguG - Set all text to lowercase
+    * gggUG - Set all text to uppercase
+
+    Now try switching word cases in the following sentence:
+
+
+the QUICK brown Fox jumps over the LAZY dog
+
+===============================================================================
+
+                         Lesson 3: ADVANCED USAGE
+
+    This lesson goes through some of the advanced usage parts of vim like working
+    with windows, buffers, marks, macros and registers. These functionalities
+    improve your productivity greatly as you can edit multiple files at the same
+    vim instance and save your actions and clipboards to multiple places.
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+                           Lesson 3.1: BUFFERS
+
+    Buffers in vim are your basic workspace. Each time you open vim, with file
+    or not, the tool will open a new buffer. To work with buffers you can use
+    the following commands:
+
+    * :e [F] - Edits given [F] file in new buffer
+    * :b[N] - Go to buffer [N]
+    * :bn - Go to next buffer
+    * :bp - Go to previous buffer
+    * :bd - Delete a buffer (close file)
+    * :ls - List all open buffers
+    * :bufdo [CMD] - Execute given command in all buffers
+        * For example :bufdo /[S]/ searches [S] from all buffers
+
+    To try this out, open a new buffer with ":e test_file". Now try to switch
+    between this buffer and the created one. Finally close the opened buffer.
+    After you are done with this, continue to the next lesson.
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+                           Lesson 3.2: WINDOWS
+
+    Windows add great value to your basic editing. You might also want to get
+    know tool called tmux for windowing your shells. Every window can access to
+    same buffers as other windows which makes. To start with windows you must
+    familiarize yourself with the following commands:
+
+    * :sp [F] - Edits given [F] file in new buffer and splits the window
+    * :vsp [F] - Edits given [F] file in new buffer and splits window vertically
+    * Ctrl + ws - Split window
+    * Ctrl + wv - Split window vertically
+    * Ctrl + ww - Switch window
+    * Ctrl + wq - Quit window
+    * Ctrl + wh - Move cursor to the left window
+    * Ctrl + wl - Move cursor to the right window
+    * Ctrl + wj - Move cursor to the below window
+    * Ctrl + wk - Move cursor to the above window
+    * :res [N] - Resize window to [N] rows
+        * :res +[N] - Grow by [N] rows
+        * :res -[N] - Shrink by [N] rows
+    * :vertical resize [N] - Resize window to [N] columns
+        * :vertical resize +[N] - Grow by [N] columns
+        * :vertical resize +[N] - Shrink by [N] columns
+    * Ctrl + w+ - Grow window size by 1 row [@]
+        * 10 Ctrl + w+ - Grow window size by 10 rows
+    * Ctrl + w- - Shrink window size by 1 row [@]
+        * 10 Ctrl + w- - Shrink window size by 10 rows
+    * Ctrl + w> - Grow window size by 1 column [@]
+        * 10 Ctrl + w> - Grow window size by 10 columns
+    * Ctrl + w< - Shrink window size by 1 column [@]
+        * 10 Ctrl + w< - Shrink window size by 10 columns
+    * Ctrl + w= - Make all windows the same size
+    * Ctrl + w_ - Increase window size to maximum height
+    * Ctrl + w| - Increase window size to maximum width
+
+    To play around with windows, open a new buffer with ":vsp test_file" or
+    ":sp test_file". Now try moving around windows and finally close the test_file
+    window for good. You can also combine this lesson with the Lesson 3.1 and
+    open new buffers and switch those between windows.
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+                           Lesson 3.3: TABS
+
+    Tabs are another way to work with multiple files. Tabs also share the same
+    buffers with each other and can be very powerful when combined with windows.
+    Basic commands for using tabs are:
+
+    * :tabnew [F] - Edits a (optional) file in new tab
+    * gt - Move to next tab
+    * gT - Move to previous tab
+    * [N]gt - Move to tab [N]
+    * Ctrl + wT - Move current split window into tab
+    * :tabmove [N] - Move current tab to the [N] position
+    * :tabc - Close the current tab and all its windows
+    * :tabo - Close all tabs except the current one
+    * :tabdo [C] - Run the command on all tabs (for example :tabdo w will save
+                   all files in tabs)
+
+    To get around tabs, open a new tab with ":tabnew" command. Now try to change
+    between this tab and the newly opened. Also try to move their position. Finally
+    close the new tab.
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+                         Lesson 3.4: REGISTERS
+
+    Registers are same as clipboards except in vim you have multiple of those.
+    By default if you use copy and cut functions they are stored to register 0.
+    Great thing about vim registers is that the data is stored to ~/.viminfo
+    file and the contents of the register are available also if you restart
+    vim.  You can also copy and paste to different registers by the following
+    commands:
+
+    * :reg - Show contents of all registers
+    * "[N]y - Copy into register [N]
+    * "[N]p - Paste contents of register [N]
+
+    To try this out, copy these lines into different registers:
+    HINT: To copy line to register type "[N]yy
+
+The quick brown fox jumps over the lazy dog
+The lazy dog jumps over the quick brown fox
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+                         Lesson 3.5: MARKS
+
+    Marks are like bookmarks in vim. Marks allow you faster navigation in
+    most used places of the text files. Marks are saved to ~/.viminfo file
+    so they are available in case you restart vim. To use marks you can use
+    the following commands:
+
+    * m[C] - Place mark [C] at current position
+    * :marks - Show list of marks
+    * ´[C] - Jump to mark at position [C]
+    * y´a - Copy text to position of mark [C]
+
+    Now to play with marks, place a mark on this line. Now get yourself to
+    Lesson 1.1 (You should know how already). Place a mark of your choice there.
+    Now try jumping between these marks and also try to copy text from
+    mark to the register.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+                         Lesson 3.6: MACROS
+
+    Macros are recorded commands that can be replayed over and over again. With
+    macros it's easy to redo things for multiple files with a little effort.
+    To work with macros you have the following commands available:
+
+    * q[C] - Start recording macro [C]
+    * q - Stop recording macro
+    * @[C] - Run macro [C]
+    * @@ - Rerun last run macro
+
+    To try these, start recording a macro with command qa. Navigate to the next
+    line and replace 2 first words with 'Angry dog'. Go to the insert mode and
+    add some text to the line. Now stop recording and try to rerun the macro on
+    the line 2.
+
+Happy cat requested a new feature for the litterbox
+Happy cat requested a new feature for the litterbox
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+                      Lesson 3.6: FILE EXPLORER
+
+    Vim has integrated file explorer which can be used to open up files
+    more easily. There are also plugins such as NerdTree that are more feature
+    rich in finding and opening files. To use the integrated file explorer
+    you can use the following commands:
+
+    - :e [PATH] - Opens integrated file explorer in path
+        - Use ':e .' to open in current folder
+    - :Sex - Split window and open integrated file explorer
+    - :Sex! - Split window vertically and open integrated file explorer
+    - :browse e - Open graphical file explorer
+    - gf - Open file name under cursor
+
+    Now try to open README.md file using the file explorer.
+
+===============================================================================
+
+                   Lesson 4: PROGRAMMING WITH VIM
+
+    Now that we have covered the basics and some more advanced topics, it's
+    time to move to actual programming work. In this chapter I will go through
+    in-the-box tools for vim that can be utilized in programming. While
+    it's more important to know the basic usage, some of these lessons might
+    be a life savers when trying to do some actual work.
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+                    Lesson 4.1: ACCESSING SHELL
+
+    Most of the times when doing programming you need to access shell for invoking
+    build or do something else and you don't want to lose your environment by
+    quiting the editor. Vim provides the following command for that:
+
+    * :sh - Access shell in current window
+
+    While it's convenient sometimes I would still suggest trying out tool called
+    tmux which makes this more easy. Other commands working with shell are:
+
+    * :! - Runs the last external command from shell history
+    * :![CMD] - Runs command in shell
+    * :!! - Repeats the last command
+    * :silent ![CMD] - Runs command silently
+    * :r ![CMD] - Runs the command and puts output into current buffer
+
+    To try this out, type in command ':r !ls' on the next empty line:
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+                    Lesson 4.2: BUILDING AND FIXING
+
+    Vim has commands that help you build targets from the editor. By default
+    it uses Makefiles. Commands are:
+
+    * :make - Compiles based on Makefile in current directory
+    * :make -C [PATH] - Compiles Makefile in given path
+    * :make! - Compiles without opening the source files after
+    * :set makeprg=[CMD] - Set :make to execute specific command instead default make
+
+    To try this out, run ':make! -C example/cpp1'. This will compile based
+    on Makefile found in this path. Now as you can see the compiling failed
+    because of syntax error. You can see all errors from the vim's quickfix
+    list. To access this list you can use these commands:
+
+    * :cl - Lists all errors
+    * :cn - Jump to next error
+    * :cp - Jump to previous error
+    * :cope - Open a window to show the current list of errors
+
+    Now fix the errors found during compiling and try to compile the example
+    again.
+
+===============================================================================
+
+                     Lesson 5: CUSTOMIZATION
+
+    Vim is very customizable as you may already know. There are lots of plugins
+    available and the most hardest part is finding the best and learning how
+    to use them. In this lesson I will show how to customize your vim installation
+    and what are the best practices.
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+                       Lesson 5.1: VIMRC
+
+    .vimrc is a file in your home directory where all customization for vim is
+    done. There are lots of examples in the internet of this file which can
+    be used almost out of the box. I would suggest you try some of them out
+    if you don't have any previous experience of working with this file.
+    You can find my configuration file from https://github.com/drodil/dotfiles/
+
+    All of the basic things you can configure through .vimrc are also available
+    from the tool itself. Here I cover the most important ones:
+
+    * :set number - Shows line numbers in the editor
+    * :set relativenumber - Shows relative line numbers in the editor
+    * :set autoindent - Uses indentation from the previous line
+    * :set smartindent - Use smart C-style indentation
+    * :set tabstop=[N] - Set tab width to [N] characters
+    * :set shiftwidth=[N] - Set indentation to [N] characters
+    * :set expandtabs - Use spaces for tabs
+    * :syntax on - Turn colour syntax on for different source files
+
+    There is lots of different settings for vim that you need to customize to
+    work for you and these are only covering the basics. I would recommend you
+    create your own dotfiles repository where you keep your configuration. This
+    way you can always see history of changes and it's very easy to use the same
+    configuration file on multiple machines.
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+                         Lesson 5.2: PLUGINS
+
+    There are A LOT of different plugins for vim and some of them are good
+    and some of them not so good. One of the best places to figure out
+    good plugins is https://vimawesome.com/. What plugins you need completely
+    depends on your programming language, toolchain and how much you want to
+    spend time on customizing the editor.
+
+    I recommend using plugin manager to manage your vim plugins. One of the
+    best plugin manager is called Plug (https://github.com/junegunn/vim-plug)
+    but there are alternatives like VundleVim
+    (https://github.com/VundleVim/Vundle.vim) and pathogen
+    (https://github.com/tpope/vim-pathogen).
+
+    When you install a new plugin I highly recommend spending time to master
+    it before adding anything additional. The plugins might conflict each
+    other in for example keybindings which might create extra headache if
+    you install them as a bundle. Here you can also refer to existing vimrc
+    files where plugins are most likely tested that they work together.
+
