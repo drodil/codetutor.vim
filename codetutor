@@ -117,8 +117,8 @@ There might be some punctuatio'n characters like this#is#function in between.
     * G - Go to the last line of the document [@]
     * Ctrl + b - Move back one full screen
     * Ctrl + f - Move forward one full screen
-    * Ctrl + u - Move back 1/2 a screen
-    * Ctrl + d - Move forward one full screen
+    * Ctrl + u - Move back a half screen
+    * Ctrl + d - Move forward a half screen
 
     You can also move around the document without moving the cursor:
 
