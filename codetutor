@@ -466,16 +466,29 @@ the QUICK brown Fox jumps over the LAZY dog
     same buffers as other windows which makes. To start with windows you must
     familiarize yourself with the following commands:
 
+    ** Create/quit windows:
     * :sp [F] - Edits given [F] file in new buffer and splits the window
     * :vsp [F] - Edits given [F] file in new buffer and splits window vertically
     * Ctrl + ws - Split window
     * Ctrl + wv - Split window vertically
     * Ctrl + ww - Switch window
     * Ctrl + wq - Quit window
+
+    ** Move cursor around:
     * Ctrl + wh - Move cursor to the left window
     * Ctrl + wl - Move cursor to the right window
     * Ctrl + wj - Move cursor to the below window
     * Ctrl + wk - Move cursor to the above window
+
+    ** Move/rearrange windows (:help window-moving)
+    * Ctrl + wR - Rotate windows up/left
+    * Ctrl + wr - Rotate windows down/right
+    * Ctrl + wL - Move the current window to the "far rigth"
+    * Ctrl + wH - Move the current window to the "far left"
+    * Ctrl + wL - Move the current window to the "very bottom"
+    * Ctrl + wL - Move the current window to the "very top"
+
+    ** Resize window:
     * :res [N] - Resize window to [N] rows
         * :res +[N] - Grow by [N] rows
         * :res -[N] - Shrink by [N] rows
