@@ -115,16 +115,21 @@ There might be some punctuatio'n characters like this#is#function in between.
     * [N]G - Go to the line [N] for example 5G would go to line 5
     * gg - Go to the first line of the document
     * G - Go to the last line of the document [@]
-    * Ctrl + b - Move back one full screen
-    * Ctrl + f - Move forward one full screen
-    * Ctrl + u - Move back a half screen
-    * Ctrl + d - Move forward a half screen
+    * Ctrl + b - Move back one full screen (mnemonic: 'backward')
+    * Ctrl + f - Move forward one full screen (mnemonic: 'forward')
+    * Ctrl + u - Move back a half screen (mnemonic: 'up')
+    * Ctrl + d - Move forward a half screen (mnemonic: 'down')
 
     You can also move around the document without moving the cursor:
 
     * Ctrl + e - Move screen down one line without moving the cursor
     * Ctrl + y - Move screen up one line without moving the cursor
     * zz - Center the cursor on screen
+
+    Or wise-versa - cursor without moving the screen:
+    * H - Move cursor to the top of the current screen (mnemonic: 'High')
+    * M - Move cursor to the middle of the current screen (mnemonic: 'Middle')
+    * L - Move cursor to the bottow of the current screen (mnemonic: 'Low')
 
     Ok, now you can try these out in this document. Try to remember them
     and put them in your muscle memory. When you think you are ready, move
