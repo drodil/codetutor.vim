@@ -163,24 +163,43 @@ int main(int argc, char** argv[]) {
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-                       Lesson 1.5: GLOBAL COMMANDS
+                       Lesson 1.5: WORKING WITH FILES
 
-    There are few global commands that are used for getting help, opening files
-    and other important stuff related to working with files. Here's a list of
+    These commands are for working with files. Here's a list of
     the most important of them:
 
-    * :w - Save the current file
+    * :w - Save the current file (or :w [F] to save to another file)
     * :wq - Save the current file and exit
+    * :x or ZZ - Write current file, if modified, and close the current window
     * :wqa - Save all tabs and quit
     * :q - Quit
     * :q! - Quit and throw away unsaved changes
-    * :help [K] - Open help for [K] keyword
+    * :r [F] - Retrieve the content of the file and place under the cursor
     * :o [F] - Open file [F]
     * :saveas [F] - Save file as [F]
     * :close - Closes current panel
-    * K - Open man page for word under the cursor
 
     You can try these out but remember to get back here ;)
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+                       Lesson 1.6: GETTING HELP AND INFORMATION
+
+    There are few global commands that are used for getting help.
+
+    * :help [K] - Open help for [K] keyword
+    * :help (without arguments) - Main help file
+    * :help user-manual - Further learning material once you finish this tutor
+
+    The following command help you navigate within the documentation or around:
+    * K - Open man page for word under the cursor
+    * Ctrl + W, W - Switch between the windows (round)
+    * Ctrl + O - Move backward to the previous place
+    * Ctrl + I - Move forward (opposite to the previous command)
+
+    You can try this on 'user-manual'. Move to 'usr_21.txt', press K (Shift + k),
+    then Ctrl + O to get back to the 'user-manual' and "back forward" to 
+    'usr_21.txt' again.
 
 ===============================================================================
 
